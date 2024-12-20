@@ -1,0 +1,26 @@
+[package]
+name = "transistor_array"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+# begin-code-snippet dependencies
+[dependencies]
+substrate = {git = "https://github.com/ucb-substrate/substrate2.git" }
+ngspice = {git = "https://github.com/ucb-substrate/substrate2.git" }
+spice = { git = "https://github.com/ucb-substrate/substrate2.git" }
+sky130pdk = { git = "https://github.com/ucb-substrate/substrate2.git" }
+
+serde = { version = "1", features = ["derive"] }
+rust_decimal = "1.30"
+rust_decimal_macros = "1.30"
+# end-code-snippet dependencies
+
+spectre = { git = "https://github.com/ucb-substrate/substrate2.git", optional = true }
+
+# This feature flag allows us to control which tests are run.
+# We don't want to run tests that use Spectre when we are developing locally.
+# If you are copying this example, you can remove this section
+# and remove the `#[cfg(feature = "spectre")]` in `src/tb.rs`.
+[features]
+spectre = ["dep:spectre"]
